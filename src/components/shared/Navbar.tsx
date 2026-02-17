@@ -14,6 +14,8 @@ export default function Navbar() {
 
   // Avoid hydration mismatch — only render theme icon after mount
   useEffect(() => {
+    // This is intentional for preventing hydration mismatch
+    // eslint-disable-next-line
     setMounted(true);
   }, []);
 
