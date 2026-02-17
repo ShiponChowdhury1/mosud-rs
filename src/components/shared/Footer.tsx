@@ -1,20 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { navLinks, socialLinks } from "@/data";
-import {
-  Linkedin,
-  Github,
-  Twitter,
-  Dribbble,
-} from "lucide-react";
-
-const iconMap: Record<string, React.ElementType> = {
-  Linkedin,
-  Github,
-  Twitter,
-  Dribbble,
-};
 
 export default function Footer() {
   const handleClick = (

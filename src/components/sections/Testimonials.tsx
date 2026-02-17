@@ -19,7 +19,7 @@ const cardVariants = {
 
 export default function Testimonials() {
   return (
-    <section className="py-20 sm:py-28 bg-white dark:bg-[#1B1B1B] transition-colors duration-300">
+    <section className="py-20 sm:py-28 bg-white dark:bg-[#0e0d0d] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div

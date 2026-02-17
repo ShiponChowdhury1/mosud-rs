@@ -11,14 +11,14 @@ export default function Marquee() {
     <section className="relative py-10 sm:py-14 overflow-hidden bg-white dark:bg-[#1B1B1B] transition-colors duration-300">
      
       {/* X-shaped marquee container */}
-      <div className="relative h-[400px] sm:h-[500px] md:h-[600px]">
+      <div className="relative h-[400px] sm:h-[500px] md:h-[400px]">
         {/* First diagonal stripe - White background (top-left to bottom-right) */}
         <div className="absolute inset-0 overflow-hidden">
           <div
             className="absolute bg-white dark:bg-[#2a2a2a] shadow-lg"
             style={{
               width: "200%",
-              height: "120px",
+              height: "90px",
               top: "50%",
               left: "-50%",
               transform: "translateY(-50%) rotate(-8deg)",
@@ -54,7 +54,7 @@ export default function Marquee() {
             className="absolute bg-[#78F50B]"
             style={{
               width: "200%",
-              height: "120px",
+              height: "90px",
               top: "50%",
               left: "-50%",
               transform: "translateY(-50%) rotate(8deg)",
