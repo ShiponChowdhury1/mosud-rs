@@ -5,14 +5,11 @@ import { contactInfo, socialLinks } from "@/data";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import {
   Mail,
   Phone,
   MapPin,
-  Linkedin,
-  Github,
-  Twitter,
-  Dribbble,
   Send,
 } from "lucide-react";
 
@@ -20,13 +17,6 @@ const contactIconMap: Record<string, React.ElementType> = {
   Mail,
   Phone,
   MapPin,
-};
-
-const socialIconMap: Record<string, React.ElementType> = {
-  Linkedin,
-  Github,
-  Twitter,
-  Dribbble,
 };
 
 export default function Contact() {
@@ -83,31 +73,31 @@ export default function Contact() {
 
             {/* My Social's */}
             <div className="pt-6">
-              <h4 className="text-white font-semibold text-lg mb-2">
+              <h4 className="text-white font-semibold text-lg mb-4">
                 My Social&apos;s
               </h4>
-              <p className="text-gray-400 text-sm mb-4">
-                Connect with me on social media for design inspiration, insights,
-                and behind-the-scenes of my creative process.
-              </p>
-              <div className="flex gap-3">
-                {socialLinks.map((social) => {
-                  const Icon = socialIconMap[social.icon] || Linkedin;
-                  return (
-                    <motion.a
-                      key={social.label}
-                      href={social.href}
-                      whileHover={{ y: -3 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-10 h-10 rounded-full bg-[#78F50B] flex items-center justify-center text-black hover:bg-[#78F50B]/90 transition-colors"
-                      aria-label={social.label}
-                    >
-                      <Icon size={18} />
-                    </motion.a>
-                  );
-                })}
+              <div className="flex gap-4">
+                {socialLinks.map((social) => (
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    whileHover={{ y: -4, scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="relative w-12 h-12 rounded-lg bg-[#78F50B] p-2 flex items-center justify-center"
+                    aria-label={social.label}
+                  >
+                    <Image
+                      src={`/svg/${social.icon}.svg`}
+                      alt={social.label}
+                      width={32}
+                      height={32}
+                      className="w-full h-full object-contain"
+                    />
+                  </motion.a>
+                ))}
               </div>
             </div>
+
           </motion.div>
 
           {/* Right – Contact Form */}

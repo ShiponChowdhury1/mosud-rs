@@ -8,16 +8,8 @@ export default function Marquee() {
   const items = [...marqueeItems, ...marqueeItems, ...marqueeItems];
 
   return (
-    <section className="relative py-16 sm:py-24 overflow-hidden bg-white">
-      {/* Header */}
-      <div className="container mx-auto px-4 mb-12 text-center">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black">
-          Crafting Designs for
-          <br />
-          Your Unique Vision
-        </h2>
-      </div>
-
+    <section className="relative py-10 sm:py-14 overflow-hidden bg-white">
+     
       {/* X-shaped marquee container */}
       <div className="relative h-[400px] sm:h-[500px] md:h-[600px]">
         {/* First diagonal stripe - White background (top-left to bottom-right) */}

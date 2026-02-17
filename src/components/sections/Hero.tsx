@@ -14,8 +14,20 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" as const },
+  },
 } as const;
+
+// Badge positions: scattered around the heading
+const badgePositions = [
+  { top: "-10%", left: "-7%" }, // UI/UX Designer – top left
+  { top: "-8%", right: "-9%" }, // Website Design – top right
+  { top: "63%", left: "-9%" }, // SaaS Design – bottom left
+  { top: "60%", right: "-11%" }, // Product Design – bottom right
+];
 
 export default function Hero() {
   const handleClick = (
@@ -32,42 +44,55 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center bg-[#1B1B1B] overflow-hidden pt-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
-      {/* Gradient glow behind */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#78F50B]/5 rounded-full blur-[120px] pointer-events-none" />
-
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6"
+        className="relative z-10 text-center max-w-5xl mx-auto px-4 sm:px-6"
       >
-        {/* Floating badges – top row */}
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-wrap justify-center gap-3 mb-8"
-        >
+        {/* Floating badges – scattered around */}
+        <div className="hidden md:block">
           {heroBadges.map((badge, i) => (
             <motion.span
               key={badge.label}
-              whileHover={{ scale: 1.05 }}
-              className="px-4 py-2 rounded-full border border-[#78F50B]/30 bg-[#78F50B]/10 text-[#78F50B] text-xs sm:text-sm font-medium"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 + i * 0.15 }}
+              whileHover={{ scale: 1.08 }}
+              className="absolute px-5 py-2.5 rounded-full border border-[#78F50B]/40 text-[#78F50B] text-sm font-medium backdrop-blur-sm"
+              style={badgePositions[i]}
             >
               {badge.label}
             </motion.span>
+          ))}
+        </div>
+
+        {/* Mobile badges */}
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-wrap justify-center gap-3 mb-8 md:hidden"
+        >
+          {heroBadges.map((badge) => (
+            <span
+              key={badge.label}
+              className="px-4 py-2 rounded-full border border-[#78F50B]/30 text-[#78F50B] text-xs font-medium"
+            >
+              {badge.label}
+            </span>
           ))}
         </motion.div>
 
         {/* Main heading */}
         <motion.h1
           variants={itemVariants}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1]"
         >
           Hello i&apos;m{" "}
-          <span className="text-[#78F50B]">Mosud</span>
+          <span className="text-white">Mosud</span>
           <br />
-          Product Designer
+          <span className="text-gray-500">Product Designer</span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -98,7 +123,10 @@ export default function Hero() {
             size="lg"
             className="border-white/20 text-white hover:bg-white/5 hover:text-white rounded-full px-8 text-base"
           >
-            <a href="#portfolio" onClick={(e) => handleClick(e, "#portfolio")}>
+            <a
+              href="#portfolio"
+              onClick={(e) => handleClick(e, "#portfolio")}
+            >
               Explore My Work
             </a>
           </Button>

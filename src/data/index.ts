@@ -25,7 +25,7 @@ export const navLinks: NavLink[] = [
 // ─── Hero ───────────────────────────────────────────────
 export const heroBadges: HeroBadge[] = [
   { label: "UI/UX Designer" },
-  { label: "Review Design" },
+  { label: "Website Design" },
   { label: "SaaS Design" },
   { label: "Product Design" },
 ];
@@ -253,7 +253,8 @@ export const contactInfo: ContactInfo[] = [
 
 // ─── Social Links ───────────────────────────────────────
 export const socialLinks: SocialLink[] = [
-  { icon: "Linkedin", href: "#", label: "LinkedIn" },
-  { icon: "Twitter", href: "#", label: "Twitter" },
-  { icon: "Dribbble", href: "#", label: "Dribbble" },
+  { icon: "1", href: "#", label: "Social 1" },
+  { icon: "2", href: "#", label: "Social 2" },
+  { icon: "3", href: "#", label: "Social 3" },
+  { icon: "4", href: "#", label: "Social 4" },
 ];
