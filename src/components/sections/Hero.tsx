@@ -1,6 +1,8 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import Typewriter from "typewriter-effect/dist/core";
 import { Button } from "@/components/ui/button";
 import { heroBadges } from "@/data";
 
@@ -30,6 +32,24 @@ const badgePositions = [
 ];
 
 export default function Hero() {
+  const typewriterRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (typewriterRef.current) {
+      new Typewriter(typewriterRef.current, {
+        strings: [
+          "Hello i'm <span style='color: inherit'>Mosud</span>",
+          "UX/UI Designer"
+        ],
+        autoStart: true,
+        loop: true,
+        delay: 150,
+        deleteSpeed: 60,
+        cursor: "|",
+      });
+    }
+  }, []);
+
   const handleClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string
@@ -89,10 +109,9 @@ export default function Hero() {
           variants={itemVariants}
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-black dark:text-white leading-[1.1] transition-colors"
         >
-          Hello i&apos;m{" "}
-          <span className="text-black dark:text-white">Mosud</span>
+          <span ref={typewriterRef} className="inline-block min-h-[1.2em] text-left w-full" />
           <br />
-          <span className="text-gray-400 dark:text-gray-500">Product Designer</span>
+          <span className="text-[#78F50B] dark:text-[#c9c5c5]">Product Designer</span>
         </motion.h1>
 
         {/* Subtitle */}
