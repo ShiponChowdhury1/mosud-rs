@@ -93,7 +93,7 @@ export const visionTabs: VisionTab[] = [
 export const projects: Project[] = [
   {
     id: 1,
-    image: "/projects/project1.jpg",
+    image: "/image/chart.png",
     category: "Web Application",
     title: "FinFlow Dashboard",
     description:
@@ -101,25 +101,25 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    image: "/projects/project2.jpg",
+    image: "/image/chart2.png",
     category: "Mobile Application",
-    title: "FinFlow Dashboard",
+    title: "Analytics Platform",
     description:
       "Mobile-first financial management app with intuitive navigation and real-time analytics.",
   },
   {
     id: 3,
-    image: "/projects/project3.jpg",
+    image: "/image/chart.png",
     category: "Web Application",
-    title: "FinFlow Dashboard",
+    title: "Data Visualization",
     description:
       "A comprehensive financial analytics dashboard with enterprise-level data visualization and real-time analytics.",
   },
   {
     id: 4,
-    image: "/projects/project4.jpg",
+    image: "/image/chart2.png",
     category: "Web Application",
-    title: "FinFlow Dashboard",
+    title: "Enterprise Dashboard",
     description:
       "A comprehensive financial analytics dashboard with enterprise-level data visualization and real-time analytics.",
   },

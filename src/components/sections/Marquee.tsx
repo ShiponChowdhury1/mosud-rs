@@ -8,14 +8,14 @@ export default function Marquee() {
   const items = [...marqueeItems, ...marqueeItems, ...marqueeItems];
 
   return (
-    <section className="relative py-10 sm:py-14 overflow-hidden bg-white">
+    <section className="relative py-10 sm:py-14 overflow-hidden bg-white dark:bg-[#1B1B1B] transition-colors duration-300">
      
       {/* X-shaped marquee container */}
       <div className="relative h-[400px] sm:h-[500px] md:h-[600px]">
         {/* First diagonal stripe - White background (top-left to bottom-right) */}
         <div className="absolute inset-0 overflow-hidden">
           <div
-            className="absolute bg-white shadow-lg"
+            className="absolute bg-white dark:bg-[#2a2a2a] shadow-lg"
             style={{
               width: "200%",
               height: "120px",
@@ -38,10 +38,10 @@ export default function Marquee() {
             >
               {items.map((item, i) => (
                 <div key={i} className="flex items-center gap-3 mx-8">
-                  <span className="text-black font-bold text-xl sm:text-2xl md:text-3xl">
+                  <span className="text-black dark:text-white font-bold text-xl sm:text-2xl md:text-3xl transition-colors">
                     {item.label}
                   </span>
-                  <span className="text-black/30">•</span>
+                  <span className="text-black/30 dark:text-white/30">•</span>
                 </div>
               ))}
             </motion.div>

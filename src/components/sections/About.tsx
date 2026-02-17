@@ -26,7 +26,7 @@ const itemVariants = {
 
 export default function About() {
   return (
-    <section id="about" className="py-20 sm:py-28 bg-[#1B1B1B]">
+    <section id="about" className="py-20 sm:py-28 bg-gray-50 dark:bg-[#1B1B1B] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left – Text */}
@@ -38,7 +38,7 @@ export default function About() {
           >
             <motion.h2
               variants={itemVariants}
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-black dark:text-white leading-tight transition-colors"
             >
               Designing experiences
               <br />
@@ -47,7 +47,7 @@ export default function About() {
 
             <motion.p
               variants={itemVariants}
-              className="mt-6 text-gray-400 text-base sm:text-lg leading-relaxed"
+              className="mt-6 text-gray-600 dark:text-gray-400 text-base sm:text-lg leading-relaxed transition-colors"
             >
               I&apos;m a passionate UI/UX designer based in Bangladesh with over 3
               years of experience creating digital products that users love. My
@@ -56,7 +56,7 @@ export default function About() {
 
             <motion.p
               variants={itemVariants}
-              className="mt-4 text-gray-400 text-base sm:text-lg leading-relaxed"
+              className="mt-4 text-gray-600 dark:text-gray-400 text-base sm:text-lg leading-relaxed transition-colors"
             >
               From startups to established enterprises, I&apos;ve helped businesses
               strengthen their digital presence through thoughtful design. I believe
@@ -65,14 +65,14 @@ export default function About() {
 
             {/* Tools */}
             <motion.div variants={itemVariants} className="mt-8">
-              <p className="text-sm text-gray-500 uppercase tracking-wider mb-3">
+              <p className="text-sm text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">
                 Tools I use
               </p>
               <div className="flex flex-wrap gap-3">
                 {tools.map((tool) => (
                   <span
                     key={tool.name}
-                    className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300"
+                    className="px-4 py-2 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-full text-sm text-gray-600 dark:text-gray-300 transition-colors"
                   >
                     {tool.name}
                   </span>
@@ -96,15 +96,15 @@ export default function About() {
                   key={card.title}
                   variants={itemVariants}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#78F50B]/30 transition-colors"
+                  className="p-6 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 hover:border-[#78F50B]/30 transition-colors shadow-sm dark:shadow-none"
                 >
                   <div className="w-10 h-10 rounded-xl bg-[#78F50B]/10 flex items-center justify-center mb-4">
                     <Icon size={20} className="text-[#78F50B]" />
                   </div>
-                  <h3 className="text-white font-semibold text-lg mb-2">
+                  <h3 className="text-black dark:text-white font-semibold text-lg mb-2 transition-colors">
                     {card.title}
                   </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed transition-colors">
                     {card.description}
                   </p>
                 </motion.div>

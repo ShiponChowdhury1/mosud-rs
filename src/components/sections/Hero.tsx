@@ -61,7 +61,7 @@ export default function Hero() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.5 + i * 0.15 }}
               whileHover={{ scale: 1.08 }}
-              className="absolute px-5 py-2.5 rounded-full border border-[#78F50B]/40 text-[#78F50B] text-sm font-medium backdrop-blur-sm"
+              className="absolute px-5 py-2.5 rounded-full border border-[#78F50B]/40 text-[#78F50B] text-sm font-medium backdrop-blur-sm bg-white/80 dark:bg-transparent"
               style={badgePositions[i]}
             >
               {badge.label}
@@ -77,7 +77,7 @@ export default function Hero() {
           {heroBadges.map((badge) => (
             <span
               key={badge.label}
-              className="px-4 py-2 rounded-full border border-[#78F50B]/30 text-[#78F50B] text-xs font-medium"
+              className="px-4 py-2 rounded-full border border-[#78F50B]/30 text-[#78F50B] text-xs font-medium bg-white/80 dark:bg-transparent"
             >
               {badge.label}
             </span>
@@ -87,18 +87,18 @@ export default function Hero() {
         {/* Main heading */}
         <motion.h1
           variants={itemVariants}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1]"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-black dark:text-white leading-[1.1] transition-colors"
         >
           Hello i&apos;m{" "}
-          <span className="text-white">Mosud</span>
+          <span className="text-black dark:text-white">Mosud</span>
           <br />
-          <span className="text-gray-500">Product Designer</span>
+          <span className="text-gray-400 dark:text-gray-500">Product Designer</span>
         </motion.h1>
 
         {/* Subtitle */}
         <motion.p
           variants={itemVariants}
-          className="mt-6 text-gray-400 text-base sm:text-lg max-w-xl mx-auto"
+          className="mt-6 text-gray-500 dark:text-gray-400 text-base sm:text-lg max-w-xl mx-auto transition-colors"
         >
           Designing ideas into user-centered designs that deliver results.
         </motion.p>
@@ -121,7 +121,7 @@ export default function Hero() {
             asChild
             variant="outline"
             size="lg"
-            className="border-white/20 text-white hover:bg-white/5 hover:text-white rounded-full px-8 text-base"
+            className="border-black/20 dark:border-white/20 text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-full px-8 text-base transition-colors"
           >
             <a
               href="#portfolio"

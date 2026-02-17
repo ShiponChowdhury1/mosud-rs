@@ -19,7 +19,7 @@ const cardVariants = {
 
 export default function Testimonials() {
   return (
-    <section className="py-20 sm:py-28 bg-[#1B1B1B]">
+    <section className="py-20 sm:py-28 bg-white dark:bg-[#1B1B1B] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -29,7 +29,7 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black dark:text-white transition-colors">
             What Clients Say
           </h2>
         </motion.div>
@@ -47,7 +47,7 @@ export default function Testimonials() {
               key={testimonial.id}
               variants={cardVariants}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-6 sm:p-8 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#78F50B]/20 transition-all duration-300"
+              className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 hover:border-[#78F50B]/20 transition-all duration-300 shadow-sm dark:shadow-none"
             >
               {/* Quote icon */}
               <Quote
@@ -56,7 +56,7 @@ export default function Testimonials() {
               />
 
               {/* Quote text */}
-              <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-6">
+              <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed mb-6 transition-colors">
                 &ldquo;{testimonial.quote}&rdquo;
               </p>
 
@@ -68,7 +68,7 @@ export default function Testimonials() {
                   </span>
                 </div>
                 <div>
-                  <p className="text-white font-medium text-sm">
+                  <p className="text-black dark:text-white font-medium text-sm transition-colors">
                     {testimonial.name}
                   </p>
                   <p className="text-gray-500 text-xs">{testimonial.role}</p>

@@ -34,23 +34,23 @@ export default function Footer() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="bg-[#1B1B1B] border-t border-white/10"
+      className="relative border-t border-gray-200 dark:border-white/10 transition-colors"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           {/* Left – Privacy & Terms */}
-          <div className="flex items-center gap-4 text-sm text-gray-400">
-            <a href="#" className="hover:text-white transition-colors">
+          <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+            <a href="#" className="hover:text-black dark:hover:text-white transition-colors">
               Privacy Policy
             </a>
-            <span className="text-white/20">|</span>
-            <a href="#" className="hover:text-white transition-colors">
+            <span className="text-black/20 dark:text-white/20">|</span>
+            <a href="#" className="hover:text-black dark:hover:text-white transition-colors">
               Terms
             </a>
           </div>
 
           {/* Center – Copyright */}
-          <p className="text-sm text-gray-400 text-center">
+          <p className="text-sm text-gray-500 dark:text-gray-400 text-center transition-colors">
             © Mosud Rahman. All rights reserved.
           </p>
         </div>
