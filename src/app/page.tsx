@@ -8,7 +8,6 @@ import {
   Services,
   Testimonials,
   FAQ,
-  CTA,
   Contact,
 } from "@/components/sections";
 
@@ -30,7 +29,6 @@ export default function Home() {
       <Services />
       <Testimonials />
       <FAQ />
-      <CTA />
       <Contact />
       <Footer />
       </div>
