@@ -40,6 +40,7 @@ export interface Project {
   category: string;
   title: string;
   description: string;
+  figmaUrl?: string;
 }
 
 // Marquee

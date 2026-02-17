@@ -6,9 +6,9 @@ export default async function ProjectsPage() {
 
   return (
     <div>
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white">Projects</h1>
-        <p className="text-gray-400 mt-1">Manage your portfolio projects.</p>
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-white">Projects</h1>
+        <p className="text-gray-400 text-sm sm:text-base mt-1">Manage your portfolio projects.</p>
       </div>
       <ProjectsManager initialProjects={projects} />
     </div>

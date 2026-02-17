@@ -15,6 +15,7 @@ const projects = [
     title: "FinFlow Dashboard",
     description:
       "A comprehensive financial analytics dashboard with enterprise-level data visualization and real-time analytics.",
+    figmaUrl: "",
   },
   {
     image: "/image/chart2.png",
@@ -22,6 +23,7 @@ const projects = [
     title: "Analytics Platform",
     description:
       "Mobile-first financial management app with intuitive navigation and real-time analytics.",
+    figmaUrl: "",
   },
   {
     image: "/image/chart.png",
@@ -29,6 +31,7 @@ const projects = [
     title: "Data Visualization",
     description:
       "A comprehensive financial analytics dashboard with enterprise-level data visualization and real-time analytics.",
+    figmaUrl: "",
   },
   {
     image: "/image/chart2.png",
@@ -36,6 +39,7 @@ const projects = [
     title: "Enterprise Dashboard",
     description:
       "A comprehensive financial analytics dashboard with enterprise-level data visualization and real-time analytics.",
+    figmaUrl: "",
   },
 ];
 

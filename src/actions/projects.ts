@@ -32,6 +32,7 @@ export async function createProject(data: {
   category: string;
   title: string;
   description: string;
+  figmaUrl?: string;
 }) {
   try {
     await dbConnect();
@@ -52,6 +53,7 @@ export async function updateProject(
     category?: string;
     title?: string;
     description?: string;
+    figmaUrl?: string;
   }
 ) {
   try {

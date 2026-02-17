@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import ThemeProvider from "@/components/shared/ThemeProvider";
+import LoadingScreen from "@/components/shared/LoadingScreen";
 import { ToastContainer } from "react-toastify";
 
 const inter = Inter({
@@ -25,7 +26,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning>
         <ThemeProvider>
-          {children}
+          <LoadingScreen>
+            {children}
+          </LoadingScreen>
           <ToastContainer
             position="bottom-right"
             autoClose={4000}

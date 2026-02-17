@@ -5,6 +5,7 @@ export interface IProject extends Document {
   category: string;
   title: string;
   description: string;
+  figmaUrl: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -15,6 +16,7 @@ const ProjectSchema = new Schema<IProject>(
     category: { type: String, required: true },
     title: { type: String, required: true },
     description: { type: String, required: true },
+    figmaUrl: { type: String, default: "" },
   },
   { timestamps: true }
 );
