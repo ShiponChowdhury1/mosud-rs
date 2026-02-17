@@ -1,9 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { projects } from "@/data";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+
+interface ProjectItem {
+  _id?: string;
+  id?: number;
+  image: string;
+  category: string;
+  title: string;
+  description: string;
+}
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -18,7 +27,16 @@ const cardVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
 } as const;
 
-export default function Projects() {
+function getImageSrc(image: string) {
+  if (image.startsWith("http")) return image;
+  if (image.startsWith("/")) return image;
+  return `/${image}`;
+}
+
+export default function Projects({ projects }: { projects?: ProjectItem[] }) {
+  const projectList = projects || [];
+  const displayProjects = projectList.slice(0, 4);
+
   return (
     <section id="portfolio" className="py-20 sm:py-28 bg-white dark:bg-[#1B1B1B] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,13 +53,12 @@ export default function Projects() {
             <br />
             Creative Approach
           </h2>
-          <motion.a
-            href="#"
-            whileHover={{ x: 4 }}
+          <Link
+            href="/projects"
             className="flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white text-sm transition-colors shrink-0"
           >
             View All <ArrowRight size={16} />
-          </motion.a>
+          </Link>
         </motion.div>
 
         {/* Project Grid */}
@@ -52,59 +69,72 @@ export default function Projects() {
           viewport={{ once: true, amount: 0.1 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          {projects.map((project) => (
+          {displayProjects.map((project, index) => (
             <motion.div
-              key={project.id}
+              key={project._id || project.id || index}
               variants={cardVariants}
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="group rounded-2xl overflow-hidden bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 hover:border-[#78F50B]/30 transition-all duration-300 shadow-sm dark:shadow-none"
+              className="h-full"
             >
-              {/* Image */}
-              <div className="relative aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#78F50B]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
+              <Link
+                href={`/projects/${project._id || project.id}`}
+                className="flex flex-col h-full group rounded-2xl overflow-hidden bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 hover:border-[#78F50B]/30 transition-all duration-300 shadow-sm dark:shadow-none"
+              >
+                {/* Image */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 shrink-0">
+                  {project.image ? (
+                    <Image
+                      src={getImageSrc(project.image)}
+                      alt={project.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      unoptimized={project.image.startsWith("http")}
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center text-gray-400 dark:text-gray-600 text-sm">No Image</div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#78F50B]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
 
-              {/* Content */}
-              <div className="p-5 sm:p-6">
-                <span className="inline-block px-3 py-1 bg-[#78F50B]/10 text-[#78F50B] text-xs font-medium rounded-full mb-3">
-                  {project.category}
-                </span>
-                <h3 className="text-black dark:text-white font-semibold text-lg sm:text-xl mb-2 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed transition-colors">
-                  {project.description}
-                </p>
-              </div>
+                {/* Content */}
+                <div className="flex flex-col flex-1 p-5 sm:p-6">
+                  <span className="inline-block self-start px-3 py-1 bg-[#78F50B]/10 text-[#78F50B] text-xs font-medium rounded-full mb-3">
+                    {project.category}
+                  </span>
+                  <h3 className="text-black dark:text-white font-semibold text-lg sm:text-xl mb-2 transition-colors line-clamp-1">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed transition-colors line-clamp-2">
+                    {project.description}
+                  </p>
+                  <span className="mt-auto pt-3 text-[#78F50B] text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    View Details →
+                  </span>
+                </div>
+              </Link>
             </motion.div>
           ))}
         </motion.div>
 
         {/* Browse All Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 text-center"
-        >
-          <motion.a
-            href="#"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-black/20 dark:border-white/20 text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors text-sm font-medium"
+        {projectList.length > 4 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-12 text-center"
           >
-            Browse All Projects
-            <ArrowRight size={16} />
-          </motion.a>
-        </motion.div>
+            <Link
+              href="/projects"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-black/20 dark:border-white/20 text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors text-sm font-medium"
+            >
+              Browse All Projects
+              <ArrowRight size={16} />
+            </Link>
+          </motion.div>
+        )}
       </div>
     </section>
   );

@@ -88,7 +88,7 @@ export default function Vision() {
 
                 {/* Description + Arrow */}
                 <div className="flex items-end justify-between gap-4">
-                  <p className="text-sm leading-relaxed max-w-[280px] text-black/60 dark:text-white/60 group-hover:text-black/70 transition-colors duration-400">
+                  <p className="text-sm leading-relaxed max-w-[280px] text-black/60 dark:text-white group-hover:text-black/70 transition-colors duration-400">
                     {tab.description}
                   </p>
                   <motion.div

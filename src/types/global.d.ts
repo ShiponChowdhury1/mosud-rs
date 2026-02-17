@@ -4,6 +4,9 @@ declare module "*.css" {
 }
 
 declare module "react-toastify/dist/ReactToastify.css";
+declare module "swiper/css";
+declare module "swiper/css/pagination";
+declare module "swiper/css/navigation";
 
 declare module "typewriter-effect/dist/core" {
   interface TypewriterOptions {

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function Footer() {
   const handleClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
+    href: string,
   ) => {
     e.preventDefault();
     const target = document.querySelector(href);
@@ -26,18 +26,24 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           {/* Left – Privacy & Terms */}
           <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
-            <a href="#" className="hover:text-black dark:hover:text-white transition-colors">
+            <a
+              href="#"
+              className="hover:text-black dark:hover:text-white transition-colors"
+            >
               Privacy Policy
             </a>
             <span className="text-black/20 dark:text-white/20">|</span>
-            <a href="#" className="hover:text-black dark:hover:text-white transition-colors">
+            <a
+              href="#"
+              className="hover:text-black dark:hover:text-white transition-colors"
+            >
               Terms
             </a>
           </div>
 
           {/* Center – Copyright */}
           <p className="text-sm text-gray-500 dark:text-gray-400 text-center transition-colors">
-            © Mosud Rahman. All rights reserved.
+            © {new Date().getFullYear()} Mosud Rahman. All rights reserved.
           </p>
         </div>
       </div>

@@ -38,8 +38,8 @@ export default function Hero() {
     if (typewriterRef.current) {
       new Typewriter(typewriterRef.current, {
         strings: [
-          "Hello i'm <span style='color: inherit'>Mosud</span>",
-          "UX/UI Designer"
+          "Hello i'm <span style='color: #78F50B'>Mosud</span>",
+          "<span style='color: #78F50B'>UX/UI</span> Designer"
         ],
         autoStart: true,
         loop: true,
@@ -132,7 +132,7 @@ export default function Hero() {
             size="lg"
             className="bg-[#78F50B] text-black font-semibold hover:bg-[#78F50B]/90 rounded-full px-8 text-base"
           >
-            <a href="#contact" onClick={(e) => handleClick(e, "#contact")}>
+            <a href="/Mosud_Rahman_Saadman_Resume.pdf" download="Mosud_Rahman_Saadman_Resume.pdf">
               Download Resume
             </a>
           </Button>
