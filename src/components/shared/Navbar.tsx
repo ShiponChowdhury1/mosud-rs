@@ -11,12 +11,36 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("#home");
 
   // Avoid hydration mismatch — only render theme icon after mount
   useEffect(() => {
     // This is intentional for preventing hydration mismatch
     // eslint-disable-next-line
     setMounted(true);
+  }, []);
+
+  // Track active section via IntersectionObserver
+  useEffect(() => {
+    const sectionIds = navLinks.map((link) => link.href.replace("#", ""));
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${id}`);
+          }
+        },
+        { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((obs) => obs.disconnect());
   }, []);
 
   const toggleTheme = () => {
@@ -60,7 +84,11 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleClick(e, link.href)}
-                className="px-3 lg:px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 rounded-lg hover:bg-black/5 dark:hover:bg-white/5"
+                className={`px-3 lg:px-4 py-2 text-sm uppercase tracking-wide transition-all duration-200 border-b ${
+                  activeSection === link.href
+                    ? "text-[#78F50B] border-[#78F50B]"
+                    : "text-gray-600 dark:text-gray-300 border-transparent hover:text-[#78F50B] hover:border-[#78F50B]"
+                }`}
               >
                 {link.label}
               </a>
@@ -127,7 +155,11 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleClick(e, link.href)}
-                  className="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors"
+                  className={`block px-4 py-3 text-sm uppercase tracking-wide transition-all duration-200 border-b ${
+                    activeSection === link.href
+                      ? "text-[#78F50B] border-[#78F50B]"
+                      : "text-gray-600 dark:text-gray-300 border-transparent hover:text-[#78F50B] hover:border-[#78F50B]"
+                  }`}
                 >
                   {link.label}
                 </a>
